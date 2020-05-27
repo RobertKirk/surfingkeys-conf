@@ -721,6 +721,13 @@ completions.gi = {
   callback: completions.go.callback,
 }
 
+// Google Scholar
+completions.gs = {
+  alias:  "gs",
+  name:   "google-scholar",
+  search: "https://scholar.google.com/search?hl=en&as_sdt=0%2C5&tbm=isch&q=",
+}
+
 // Google - I'm Feeling Lucky
 completions.G = {
   alias:    "G",
@@ -728,6 +735,20 @@ completions.G = {
   search:   "https://www.google.com/search?btnI=1&q=",
   compl:    "https://www.google.com/complete/search?client=chrome-omni&gs_ri=chrome-ext&oit=1&cp=1&pgcl=7&q=",
   callback: completions.go.callback,
+}
+
+// Postgres
+completions.pg = {
+  alias:  "pg",
+  name:   "postgres",
+  search: "https://www.google.com/search?q=site:http://www.postgresql.org/docs/11/+",
+}
+
+// Pytorch
+completions.pt = {
+  alias:  "pt",
+  name:   "Pytorch",
+  search: "https://pytorch.org/docs/stable/search.html?check_keywords=yes&area=default&q=",
 }
 
 //  ****** Elixir ****** //
@@ -912,15 +933,15 @@ completions.gw.callback = (response) => JSON.parse(response.text).results.map((s
 
 
 // Go-Search
-completions.gs = {
-  alias:   "gs",
+completions.gos = {
+  alias:   "gos",
   name:    "go-search",
   favicon: "https://go-search.org/images/logo-16.png",
   search:  "http://go-search.org/search?q=",
   compl:   "http://go-search.org/api?action=search&q=",
 }
 
-completions.gs.callback = (response) => JSON.parse(response.text).hits
+completions.gos.callback = (response) => JSON.parse(response.text).hits
   .map((r) => r.package)
 
 
@@ -1127,6 +1148,13 @@ completions.re = {
 
 completions.re.callback = (response) => JSON.parse(response.text).data.children
   .map((s) => createURLItem(`[${s.data.score}] ${s.data.title}`, `https://reddit.com${s.data.permalink}`))
+
+// Twitter
+completions.t = {
+  alias:  "t",
+  name:   "twitter",
+  search: "https://twitter.com/search?q=",
+}
 
 // YouTube
 completions.yt = {
