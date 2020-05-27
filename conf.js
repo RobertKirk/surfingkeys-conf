@@ -6,7 +6,9 @@ const completions = require("./completions")
 util.addSettings({
   hintAlign:                "left",
   omnibarSuggestionTimeout: 500,
+  scrollStepSize:           225,
   richHintsForKeystroke:    1,
+  blacklistPattern:         /alt.org\/*/,
   theme:                    `
     /* Disable RichHints CSS animation */
     .expandRichHints {
@@ -18,15 +20,24 @@ util.addSettings({
   `,
 })
 
-if (typeof Hints !== "undefined") {
-  Hints.characters = "qwertasdfgzxcvb"
-}
+Hints.characters = "asdfghjkl;eruitybnvm,c"
+
+// eslint-disable-next-line
+unmapAllExcept(
+  ["j", "k", "J", "K", "H", "L", "S", "D", "i", "gi", "gg", "G", "PgUp", "PgDown"],
+  /roamresearch.com/,
+)
+// eslint-disable-next-line
+unmapAllExcept(["J", "K", "H", "L", "S", "D"], /mail.google.com|calendar.google.com/)
+
+// map("J", "R")
+// map("K", "E")
 
 // Leader for site-specific mappings
-const siteleader = "<Space>"
+const siteleader = ","
 
 // Leader for OmniBar searchEngines
-const searchleader = "a"
+const searchleader = "<Space>"
 
 // Process mappings and completions
 // See ./keys.js and ./completions.js
