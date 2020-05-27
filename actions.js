@@ -9,6 +9,45 @@ const actions = {}
 
 // URL Manipulation/querying
 // -------------------------
+
+actions.gotoEditBox = () => {
+  const inputs = document.getElementsByTagName("input")
+  let input = null
+  for (let i = 0; i < inputs.length; i += 1) {
+    if (inputs[i].type === "text") {
+      input = inputs[i]
+      break
+    }
+  }
+  if (input) {
+    input.click()
+    input.focus()
+  }
+}
+
+actions.openClipUrl = () => {
+  navigator.clipboard.readText().then((text) => {
+    if (text.startsWith("http://") || text.startsWith("https://")) {
+      window.location = text
+    } else {
+      const newLocation = `https://www.google.com/search?q=${text}`
+      window.location = newLocation
+    }
+  })
+}
+
+actions.getArxivLinkMarkdown = () => `[${document.title.replace(/\[\d{3,5}\.\d{3,5}\] /gi, "")}](${window.location.href})`
+
+actions.getLinkMarkdown = () => `[${document.title}](${window.location.href})`
+
+actions.copyMarkdownLinkText = () => {
+  let text = actions.getLinkMarkdown()
+  if (window.location.href.slice(0, "https://arxiv.org".length) === "https://arxiv.org") {
+    text = actions.getArxivLinkMarkdown()
+  }
+  Clipboard.write(text)
+}
+
 actions.vimEditURL = () =>
   Front.showEditor(util.getCurrentLocation(), (url) => {
     actions.openLink(url)()
