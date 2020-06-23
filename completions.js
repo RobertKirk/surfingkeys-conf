@@ -725,7 +725,7 @@ completions.gi = {
 completions.gs = {
   alias:  "gs",
   name:   "google-scholar",
-  search: "https://scholar.google.com/search?hl=en&as_sdt=0%2C5&tbm=isch&q=",
+  search: "https://scholar.google.com/scholar?hl=en&as_sdt=0%2C5&tbm=isch&q=",
 }
 
 // Google - I'm Feeling Lucky
