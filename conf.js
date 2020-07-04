@@ -6,7 +6,7 @@ const completions = require("./completions")
 util.addSettings({
   hintAlign:                "left",
   omnibarSuggestionTimeout: 500,
-  scrollStepSize:           175,
+  scrollStepSize:           100,
   richHintsForKeystroke:    1,
   blacklistPattern:         /alt.org\/*/,
   theme:                    `
@@ -70,9 +70,6 @@ util.addSettings({
 
 Hints.characters = "asdfghjkl;eruitybnvm,c"
 
-// map("J", "R")
-// map("K", "E")
-
 // Leader for site-specific mappings
 const siteleader = ","
 
@@ -86,12 +83,44 @@ util.rmSearchAliases(keys.unmaps.searchAliases)
 util.processMaps(keys.maps, keys.aliases, siteleader)
 util.processCompletions(completions, searchleader)
 
+// Roam Stuff
+settings.clickableSelector = "*.roam-block, *.rm-block-ref, *.rm-title-display"
+
+const simulateMouseEvent = function (element, eventNames, { x, y } = {}, shiftKey = false) {
+  if (typeof eventNames === "string") eventNames = [eventNames]
+  eventNames.forEach((eventName) => {
+    element.dispatchEvent(
+      // synchronous
+      new MouseEvent(eventName, {
+        view:       window,
+        bubbles:    true,
+        cancelable: true,
+        clientX:    x,
+        clientY:    y,
+        button:     0,
+        shiftKey,
+      }),
+    )
+  })
+}
+
 // eslint-disable-next-line
 unmapAllExcept(
-  ["j", "k", "J", "K", "H", "L", "S", "D", "i", "gi", "gg", "G", "PgUp", "PgDown"],
+  ["j", "k", "J", "K", "H", "L", "i", "gi", "gg", "G", "PgUp", "PgDown", "f", "F", "/", "?"],
   /roamresearch.com/,
 )
+
+// eslint-disable-next-line
+mapkey("F", "Roamclick", function () {
+  // eslint-disable-next-line
+  Hints.create("", function (element, _) {
+    simulateMouseEvent(element, ["mousedown", "mouseup", "click"], { x: 0, y: 0 }, true)
+  })
+}, { domain: /roamresearch\.com/i })
+
 // eslint-disable-next-line
 unmapAllExcept(["J", "K", "H", "L", "S", "D"], /mail.google.com|calendar.google.com/)
+
+iunmap(":")
 
 module.exports = { siteleader, searchleader }
