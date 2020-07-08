@@ -1,6 +1,7 @@
 const util = require("./util")
 const keys = require("./keys")
 const completions = require("./completions")
+const expansions = require("./expansions")
 
 // ---- Settings ----//
 util.addSettings({
@@ -120,6 +121,8 @@ mapkey("F", "Roamclick", function () {
 
 // eslint-disable-next-line
 unmapAllExcept(["J", "K", "H", "L", "S", "D"], /mail.google.com|calendar.google.com/)
+
+expansions.addTextExpansions(expansions.textExpansions)
 
 iunmap(":")
 
