@@ -1,12 +1,11 @@
 const textExpansions = {}
 
 textExpansions.rmdt = {
-  alias:     "rmdt",
+  alias:     "dt",
   name:      "Roam Daily Note Template",
   url:       /roamresearch\.com/,
   expansion: `
-- # Daily Plan
-    -
+- Embed Daily Plan here
 - # Notes
     -
 - # [[to-read]]
@@ -22,7 +21,7 @@ textExpansions.rmdt = {
 }
 
 textExpansions.rmbg = {
-  alias:     "rmbg",
+  alias:     "bg",
   name:      "Roam Blog Page Template",
   url:       /roamresearch\.com/,
   expansion: `
@@ -35,11 +34,17 @@ textExpansions.rmbg = {
   `,
 }
 
-const addTextExpansions = (textExpansionSettings) => {
+const addTextExpansions = (textExpansionSettings, normalModeExpansionLeader) => {
   Object.values(textExpansionSettings).forEach((s) => {
+    mapkey(
+      `${normalModeExpansionLeader}${s.alias}`,
+      `Normal Mode Text expanding ${s.name}`,
+      () => window.navigator.clipboard.writeText(s.expansion),
+      { domain: s.domain },
+    )
     imapkey(
-      s.alias,
-      `Text expanding ${s.name}`,
+      `xx${s.alias}`,
+      `Insert Mode Text expanding ${s.name}`,
       () => window.navigator.clipboard.writeText(s.expansion),
       { domain: s.domain },
     )

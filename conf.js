@@ -77,6 +77,8 @@ const siteleader = ","
 // Leader for OmniBar searchEngines
 const searchleader = "<Space>"
 
+const normalModeExpansionLeader = "x"
+
 // Process mappings and completions
 // See ./keys.js and ./completions.js
 util.rmMaps(keys.unmaps.mappings)
@@ -122,7 +124,7 @@ mapkey("F", "Roamclick", function () {
 // eslint-disable-next-line
 unmapAllExcept(["J", "K", "H", "L", "S", "D"], /mail.google.com|calendar.google.com/)
 
-expansions.addTextExpansions(expansions.textExpansions)
+expansions.addTextExpansions(expansions.textExpansions, normalModeExpansionLeader)
 
 iunmap(":")
 
