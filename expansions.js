@@ -5,6 +5,7 @@ textExpansions.rmdt = {
   name:      "Roam Daily Note Template",
   url:       /roamresearch\.com/,
   expansion: `
+- # What are you [[Noticing]] this week?
 - Embed Daily Plan here
 - # Notes
     -
