@@ -9,7 +9,7 @@ util.addSettings({
   omnibarSuggestionTimeout: 500,
   scrollStepSize:           100,
   richHintsForKeystroke:    1,
-  blacklistPattern:         /alt.org\/*/,
+  blacklistPattern:         /((alt.org\/*)|(localhost\/*))/,
   theme:                    `
     .sk_theme {
       font-family: Input Sans Condensed, Charcoal, sans-serif;
