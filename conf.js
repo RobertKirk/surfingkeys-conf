@@ -109,17 +109,17 @@ const simulateMouseEvent = function (element, eventNames, { x, y } = {}, shiftKe
 
 // eslint-disable-next-line
 unmapAllExcept(
-  ["j", "k", "J", "K", "H", "L", "i", "gi", "gg", "G", "PgUp", "PgDown", "f", "F", "/", "?"],
+  ["H", "L", "PgUp", "PgDown", "/", "?"],
   /roamresearch.com/,
 )
 
 // eslint-disable-next-line
-mapkey("F", "Roamclick", function () {
-  // eslint-disable-next-line
-  Hints.create("", function (element, _) {
-    simulateMouseEvent(element, ["mousedown", "mouseup", "click"], { x: 0, y: 0 }, true)
-  })
-}, { domain: /roamresearch\.com/i })
+// mapkey("F", "Roamclick", function () {
+//   // eslint-disable-next-line
+//   Hints.create("", function (element, _) {
+//     simulateMouseEvent(element, ["mousedown", "mouseup", "click"], { x: 0, y: 0 }, true)
+//   })
+// }, { domain: /roamresearch\.com/i })
 
 // eslint-disable-next-line
 unmapAllExcept(["J", "K", "H", "L", "S", "D"], /mail.google.com|calendar.google.com/)

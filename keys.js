@@ -8,7 +8,7 @@ const unmaps = {
     "ow", "cp", ";cp",
     ";ap", "zQ", "zz",
     "zR", "ab", "Q",
-    "q", "ag", "af", ";s",
+    "q", "ag", "af",
   ],
   searchAliases: {
     s: ["g", "d", "b",

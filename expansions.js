@@ -3,7 +3,7 @@ const textExpansions = {}
 textExpansions.rmdt = {
   alias:     "dt",
   name:      "Roam Daily Note Template",
-  url:       /roamresearch\.com/,
+  domain:       /roamresearch\.com/,
   expansion: `
 - # What are you [[Noticing]] this week?
 - Embed Daily Plan here
@@ -24,7 +24,7 @@ textExpansions.rmdt = {
 textExpansions.rmbg = {
   alias:     "bg",
   name:      "Roam Blog Page Template",
-  url:       /roamresearch\.com/,
+  domain:       /roamresearch\.com/,
   expansion: `
 - [link here](https://arxiv.org/abs/1802.06070)
 - authors:: 
